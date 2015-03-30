@@ -1,0 +1,1 @@
+{"type": "TABLE", "primary_key": "id", "id": "4f311036-2489-4f1d-af4d-8f4b27fb3486", "name": "tickets", "indexes": [], "db": {"id": "dbe19035-39ec-4afb-a57b-61a050e4f9da", "name": "kaizen", "type": "DB"}, "doc_count_estimates": [8]}

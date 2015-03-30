@@ -1,0 +1,219 @@
+{% extends "baseplate/layout.html" %}
+{% block header_title %}M-Cubed Global{% endblock header_title %}
+{% block header_css_pre %}
+<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/camera.css') }}">
+{% endblock header_css_pre %}
+{% block header_js_loads %}
+		<script src="{{ url_for('static', filename='js/sForm.js') }}"></script> 
+		<script src="{{ url_for('static', filename='js/camera.js') }}"></script>
+		<!--[if (gt IE 9)|!(IE)]><!-->
+		<script src="{{ url_for('static', filename='js/jquery.mobile.customized.min.js') }}"></script>
+		<!--<![endif]-->
+{% endblock header_js_loads %}
+{% block header_js_docready %}
+			jQuery('#camera_wrap').camera({
+				loader: false,
+				pagination: false ,
+				minHeight: '250',
+				thumbnails: false,
+				height: '37.55208333333333%',
+				caption: true,
+				navigation: false,
+				fx: 'mosaic'
+				});
+{% endblock header_js_docready %}
+{% block body %}
+<!--==============================Slider=================================-->
+<div class="slider_wrapper ">
+	<div id="camera_wrap" class="">
+		<div data-src="{{ url_for('static', filename='images/frontpage/slide1.jpg') }}" >
+			<div class="caption fadeIn">
+				<!-- <div class="title"><img src="{{ url_for('static', filename='images/frontpage/weee-logo.png') }}" alt=""></div>
+				<a href="{{ url_for('PagesView:get', uuid='f7a73acf-6b65-472b-b39c-39f5df1f455a') }}" class="">
+                            Worldwide in-country take-back and processing for loyalty programs, trade-in and trade-up programs, asset optimization and E-Waste Solutions. We will customize a plan unique to your needs.
+                            </a> -->
+			</div>
+		</div>
+		<div data-src="{{ url_for('static', filename='images/frontpage/slide2.jpg') }}" >
+			<div class="caption fadeIn">
+				<!-- <div class="title"><img src="{{ url_for('static', filename='images/frontpage/rohs.png') }}" alt=""></div>
+				<a href="{{ url_for('PagesView:get', uuid='1249fd8b-164c-489c-9db9-13ae3c15cd8b') }}" class="">
+				RoHS, WEEE, and Reach Certification
+				</a> -->
+			</div>
+		</div>
+		<div data-src="{{ url_for('static', filename='images/frontpage/slide3.jpg') }}" >
+			<div class="caption fadeIn">
+				<!-- <div class="title"><img src="{{ url_for('static', filename='images/frontpage/data-protection.png') }}" alt=""></div>
+				<a href="{{ url_for('PagesView:get', uuid='6513db97-eb95-4c7c-9b95-4aa3e4aad00e') }}" class="">
+				Data Security for all memory devices under Sarbanes-Oxley and HIPAA
+				</a> -->
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clear mt"></div>
+<!--==============================Content=================================-->
+<div class="page1_block">
+	<div class="p1_top">  <div class=" container_12">
+		<div class="grid_12">
+              {%- include 'baseplate/blocks/flashed.html' -%}
+              <!-- <h3 style='center'>Placeholder for Email Newsletter</h3> -->
+		<!--
+              <h3>Receive our Inventory List &amp; Updates:</h3>
+		<form id="newsletter">
+					<div class="rel">
+						<div class="success">Your subscribe request has been sent!</div>
+						<label class="email">
+							<input type="email" value="Enter your email here" >
+							<span class="error">*This is not a valid email address.</span>
+						</label> 
+						<div class="alright"><a href="#" class="" data-type="submit"></a> </div>
+					</div>
+				</form> -->
+				<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	</div>
+	<div class="container_12 p_bot">
+       <!--
+	<div class="grid_3">
+		<div class="block1">
+			<h3><a href="#"><span>A.</span>Why do you have to change how you design products?</a></h3>
+				There are Legislation WEEE Targets that have to be met.<br>
+				These targets include (RRRs)<br>
+				It’s a simple equation:<br>
+				[Recovery = Reuse + Recycle]<br>
+				-	<strong>Recoverable</strong> <br>Components and Materials <br>
+				-	<strong>Re-useable</strong> <br>Components and Materials <br>
+				-	<strong>Recyclable</strong> <br>Components and Materials <br>
+				<br>
+			<a href="#" class="btn">read more</a>
+		</div>
+	</div>
+	<div class="grid_3">
+		<div class="block1">
+			<h3><a href="#"><span>B.</span>Start to finish environmental compliance</a></h3>
+				Let M-Cubed Global provide you<br>
+				with a full turn-key solution<br>
+				so that you can focus on your<br>
+				core competencies.<br>
+				Let us take the headache away<br>
+				with simplified WEEE Management<br>
+				for both ODM &amp; it's Clients.<br>
+			<br>
+			<a href="#" class="btn">read more</a>
+		</div>
+	</div>
+	<div class="grid_3">
+		<div class="block1">
+			<h3><a href="#"><span>C.</span>Global WEEE compliance <br> with facilities in <br> Europe, Asia and US</a></h3>
+			-	All reporting of target metrics to Member States<br>
+			-	Compliant documentation w/ each product shipped<br>
+			-	Compliant documentation w/ each Member State<br>
+			-	Tracking and reporting of all Product elements<br>
+			<br>
+			<a href="#" class="btn">read more</a>
+		</div>
+	</div>
+	<div class="grid_3">
+		<div class="block1">
+			<h3><a href="#" class=""><span>D.</span><strong class="nowrap">Hourly Consultation </strong>
+				(in person, phone, email)</a></h3>
+				Our specialists are standing by<br>
+				to hear from you!<br>
+			<br>
+			<a href="#" class="btn">read more</a>
+		</div>
+	</div>
+
+       -->
+	<div class="grid_12">
+	  <h3 style="padding-top: 37px;">Welcome to M-Cubed Global</h3>
+	  <ul class="list">
+		<li style="font-size: large;"><a href="{{ url_for('PagesView:get', uuid='f7a73acf-6b65-472b-b39c-39f5df1f455a') }}" class="">
+		Worldwide in-country take-back and processing for loyalty programs, trade-in and trade-up programs, asset optimization and E-Waste Solutions
+              </a></li><br>
+		<li style="font-size: large;"><a href="{{ url_for('PagesView:get', uuid='1249fd8b-164c-489c-9db9-13ae3c15cd8b') }}" class="">
+		RoHS, WEEE, and Reach Certification
+		</a></li><br>
+		<li style="font-size: large;"><a href="{{ url_for('PagesView:get', uuid='6513db97-eb95-4c7c-9b95-4aa3e4aad00e') }}" class="">
+		Data Security for all memory devices under Sarbanes-Oxley and HIPAA
+		</a></li><br>
+	  </ul>
+	</div>
+	</div>
+
+</div>
+
+<div class="content">
+	<div class="container_12 ">
+		<div class="grid_12">
+			<div class="block2">
+				<h3 class="upp">Have Questions? <br> Ask a Specialist</h3>
+				<div class="c_phone">408 752 1560</div>
+				<address>5 days a week<br>(Monday-Friday)<br>from 9:00 am<br>to 4:30 pm PST</address>
+				<div class="grid_3 fright omega">
+					<a href="{{ url_for('TicketsView:index') }}" class="chat">online<br>support</a>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+          <!--
+		<div class="grid_12">
+			<blockquote class="bq1">
+				<div class="grid_3 alpha">
+					<div class="bq_left">
+						<img src="{{ url_for('static', filename='images/frontpage/testimonial_face.jpg') }}" alt="">
+						<span><strong></strong></span>
+					</div>
+				</div>  
+				<p>Dealing with M-Cubed Global made things extremely quick and easy. <img src="{{ url_for('static', filename='images/iconlogos/quotes.png') }}" alt=""></p>
+				<div class="bq_bot">T. Zonday<div class="upp">(@iaminigomontoya)</div></div>
+			</blockquote>
+		</div>
+		<div class="grid_3">
+			<div class="box ">
+				<div class="maxheight">
+					<img src="{{ url_for('static', filename='images/frontpage/handshake.jpg') }}" alt="">
+					<h3>Takeback &amp;<br> End of Life</h3>  
+					<p>Divest yourself of excess inventory today!</p>
+				</div>
+				<a href="#">read more</a>
+			</div>
+		</div>
+		<div class="grid_3">
+			<div class="box ">
+				<div class="maxheight">
+					<img src="{{ url_for('static', filename='images/frontpage/baby_on_mom.jpg') }}" alt="">
+					<h3>Environmental <br> Compliance</h3>
+					<p>Ensure your company meets WEEE Guidelines today, so your products can sell in Europe tomorrow!</p>
+				</div>
+			<a href="#">read more</a>
+			</div>
+		</div>
+		<div class="grid_3">
+			<div class="box ">
+				<div class="maxheight">
+					<img src="{{ url_for('static', filename='images/frontpage/college_student.jpg') }}" alt="">
+					<h3>Component <br>Testing</h3>
+					<p>Is that Power Supply capacitor truly in spec? Send component batches in for testing today!</p>
+				</div>
+				<a href="#">read more</a>
+			</div>
+		</div>
+		<div class="grid_3">
+			<div class="box ">
+				<div class="maxheight">
+					<img src="{{ url_for('static', filename='images/frontpage/man_and_woman.jpg') }}" alt="">
+					<h3>E-Waste <br> Disposal</h3>
+					<p>Recycle Electronic Waste products so they can be born again into new products and opportunties!</p>
+				</div>
+				<a href="#">read more</a>
+			</div>
+		</div>
+           -->
+	</div>   
+</div>
+{% endblock body %}

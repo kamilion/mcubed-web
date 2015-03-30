@@ -1,0 +1,23 @@
+{% extends "baseplate/layout.html" %}
+{% block header_title %}Login to Account{% endblock %}
+{% block header_css_pre %}
+<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/form.css') }}">
+{% endblock header_css_pre %}
+{% block body %}
+<div class="content">
+  <div class="container_12">
+	<div class="grid_8">
+         {%- include 'baseplate/blocks/flashed.html' -%}
+	  <h3><a href="{{ url_for('AuthView:yubikey') }}">Login</a></h3>
+	  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+	  <form id="form" action="{{ url_for('AuthView:post') }}" method=post>
+		{{ form.csrf_token }}</br>
+		{{ form.email(size=20, class="name", placeholder=form.email.label.text) }}</br>
+		{{ form.password(size=20, class="name", placeholder=form.password.label.text) }}</br>
+		<div class="clear"></div>
+		<input class="btn" type="submit" value="Login">
+	  </form>
+	</div>
+  </div>   
+</div>
+{% endblock %}

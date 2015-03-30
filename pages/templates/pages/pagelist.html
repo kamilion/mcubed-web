@@ -1,0 +1,26 @@
+{% extends "baseplate/layout.html" %}
+{% block header_title %}List of Pages{% endblock %}
+{% block body %}
+<div class="content">
+  <div class="container_12 ">
+	<div class="grid_12">
+         {%- include 'baseplate/blocks/flashed.html' -%}
+	  <h3><a href="{{ url_for('PagesView:index') }}">Pages</a></h3>
+	  <ul>
+	  {% for result in results %}
+		<li><em><a href="{{ url_for('PagesView:get', uuid=result.id) }}">{{ result.meta['title']|safe }}</a>
+      {% if current_user.id %}
+      | <a href="{{ url_for('PagesView:edit_page', uuid=result.id) }}">Edit</a>
+      | <a href="{{ url_for('PagesView:destroy_page', uuid=result.id) }}">Destroy</a>
+      {% endif %} </em>
+	  {% else %}
+		<li><em>No Pages here so far...</em>
+	  {% endfor %}
+	  {% if current_user.id %}
+      <li><br><a href="{{ url_for('PagesView:create_page') }}">Create a new Page</a>
+      {% endif %}
+	  </ul>
+	</div>
+  </div>   
+</div>
+  {% endblock %}

@@ -1,0 +1,5 @@
+.idea/**
+venv/**
+venv34/**
+*.pyc
+app/config.py

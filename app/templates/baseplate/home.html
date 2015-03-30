@@ -1,0 +1,66 @@
+{% extends "baseplate/layout.html" %}
+{% block header_title %}M-Cubed Global{% endblock header_title %}
+{% block header_css_post %}
+<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/touchTouch.css') }}">
+{% endblock header_css_post %}
+{% block header_js_loads %}
+		<script src="{{ url_for('static', filename='js/touchTouch.jquery.js') }}"></script> 
+{% endblock header_js_loads %}
+{% block header_js_docready %}
+			$('.gallery a.gal').touchTouch();
+{% endblock header_js_docready %}
+{% block body %}
+<!--==============================Content=================================-->
+
+<div class="content">
+  <div class="container_12">
+  <div class="container_12 gallery">
+	<div class="grid_12">
+         {%- include 'baseplate/blocks/flashed.html' -%}
+	  <h3>M-Cubed Global's Value Added Services</h3>
+	  <div class="serv center">
+		<img src="/static/images/lifecycle_globe.jpg" alt="">
+	  </div>
+	  <div class="serv">
+		<a href="/static/images/RoHS_Sensor_big.jpg" class="gal img_inner fleft"><img src="/static/images/RoHS_Sensor_page.jpg" alt=""></a>
+		<div class="extra_wrapper">
+			<div class="text1"><a href="#">Data Security Solutions</a></div>
+			<p>
+			- Disk Wiping Solutions (Call for Details) <br>
+			-	Disk Re-Certification<br>
+			-	Reporting and Traceability
+			</p>
+			<a href="{{ url_for('PagesView:get', uuid='6513db97-eb95-4c7c-9b95-4aa3e4aad00e') }}" class="btn">read more</a>
+		</div>
+	  </div>
+	  <div class="serv">
+		<a href="/static/images/RoHS_WEEE_big.jpg" class="gal img_inner fleft"><img src="/static/images/RoHS_WEEE_page.jpg" alt=""></a>
+		<div class="extra_wrapper">
+			<div class="text1"><a href="#">Global WEEE compliance offering via facilities in Europe, Asia and US</a></div>
+			<p>
+			-	Registration Assistance &amp; Documentation Requirements for EU Member States<br>
+			-	Product collection and recycling details<br>
+			-	Producer Take-Back and Treatment details<br>
+			-	WEEE cost offset when combined with tailored Obsolete, Excess and Facility E-Waste program with M-Cubed Global<br>
+			</p>
+			<a href="{{ url_for('PagesView:get', uuid='1249fd8b-164c-489c-9db9-13ae3c15cd8b') }}" class="btn">read more</a>
+		</div>
+	  </div>
+	  <div class="serv">
+		<a href="/static/images/big5.jpg" class="gal img_inner fleft"><img src="/static/images/page3_img5.jpg" alt=""></a>
+		<div class="extra_wrapper">
+			<div class="text1"><a href="#">Our Associations & Certifications</a></div>
+			<p>
+			-	Member of the International Association of Electronic Recyclers (IAER)<br>
+			-	Member of the California Resource Recovery Association (CAAR) affiliated with the National Recycling Association (NRA)<br>
+			-	Certified collector/recycler CA SB 20/50<br>
+			-	ISO 14001 certified
+			</p>
+			<a href="{{ url_for('PagesView:get', uuid='5cb464a6-a73d-465a-9265-546990f59d18') }}" class="btn">read more</a>
+		</div>
+	  </div>
+	</div>
+  </div>   
+  </div>   
+</div>
+{% endblock %}

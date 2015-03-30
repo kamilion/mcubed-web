@@ -1,0 +1,30 @@
+{% extends "baseplate/layout.html" %}
+{% block header_title %}List of Pages{% endblock %}
+{% block header_js_loads %}
+		<script src="{{ url_for('static', filename='js/ckeditor/ckeditor.js') }}"></script>
+{% endblock header_js_loads %}
+{% block body %}
+<div class="content">
+  <div class="container_12 ">
+	<div class="grid_12">
+              {%- include 'baseplate/blocks/flashed.html' -%}
+		<form id="form" action="{{ url_for('PagesView:do_edit_page', uuid=page_uuid) }}" method=post>
+			{% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+			{{ form.csrf_token }}
+			<label class="name">{{ form.title(placeholder='Page Title', size=80) }}</label><br>
+			<label class="email">{{ form.object_id(placeholder='object_id', size=80) }}</label><br>
+			<label class="message">{{ form.content(placeholder='Content Template', rows=25, cols=80) }}</label><br>
+			<script>
+				CKEDITOR.replace( 'content', { allowedContent: true } );
+			</script>
+			<div>
+				<div class="clear"></div>
+				<div class="btns">
+					<a href="#" onclick="$(this).closest('form').submit()" data-type="submit" class="btn">Store Data</a>
+				</div>
+			</div>
+		</form>  
+	</div>
+  </div>   
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{%- block header %}
+	<title>{% block header_title %}M-Cubed Global{% endblock header_title %}</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name = "format-detection" content = "telephone=no" />
+	{% block header_meta %}{% endblock header_meta %}
+	<link rel="icon" href="{{ url_for('static', filename='images/iconlogos/favicon.ico') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/iconlogos/favicon.ico') }}" />
+	{% block header_css_pre %}{% endblock header_css_pre %}
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+	{% block header_css_post %}{% endblock header_css_post %}
+	<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery-migrate-1.1.1.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/script.js') }}"></script> 
+	<script src="{{ url_for('static', filename='js/superfish.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.ui.totop.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.equalheights.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.mobilemenu.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.easing.1.3.js') }}"></script>
+	{% block header_js_loads %}{% endblock header_js_loads %}
+	<script>
+		$(document).ready(function(){
+			{% block header_js_docready %}{% endblock header_js_docready %}
+			/*Back to Top*/
+			$().UItoTop({ easingType: 'easeOutQuart' });
+		}); 
+	</script>
+	<!--[if lt IE 8]>
+		<div style=' clear: both; text-align:center; position: relative;'>
+			<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+			<img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+			</a>
+		</div>
+	<![endif]-->
+	<!--[if lt IE 9]>
+		<script src="/static/js/html5shiv.js"></script>
+		<link rel="stylesheet" media="screen" href="/static/css/ie.css">
+	<![endif]-->
+<!-- end javascript data -->
+{% endblock header -%}
+</head>
+<body class="" id="top">
+{%- include 'baseplate/blocks/navigation.html' -%}
+
+<!-- begin content container -->
+<!-- begin body block -->
+{% block body %}
+<div class="content">
+  <div class="container_12">
+	<div class="grid_12">
+		<p>Sorry, no acceptable content could be rendered for this endpoint.</p>
+	</div>
+  </div>
+</div>
+{% endblock body %}
+<!-- end body block -->
+
+<!-- end content container -->
+
+<!-- begin footer container -->
+{%- block footer %}{% endblock footer -%}
+{%- include 'baseplate/blocks/footer.html' -%}
+<!-- end footer container -->
+
+</html>

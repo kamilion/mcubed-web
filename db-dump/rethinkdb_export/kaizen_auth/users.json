@@ -1,0 +1,5 @@
+[
+{"id": "a62c9ff9-0a66-4486-8956-a5b93f8a068c", "email": "kyle@ospnet.org", "active": true, "identity_yubico": "vvddngikvgln", "admin": true, "password": ""},
+{"id": "b09afa64-fd51-4d90-aa4d-983f1357a5c4", "email": "dwfreed@mtu.edu", "active": true, "identity_yubico": "ccccccbcjegt", "admin": true, "password": ""},
+{"id": "bb34659b-6110-44b1-a5d3-1cea042fdfd4", "email": "kamilion@gmail.com", "active": true, "identity_yubico": "ccccccdbildi", "admin": true, "password": ""}
+]

@@ -1,0 +1,104 @@
+@import "../css/reset.css";
+@import "../css/superfish.css";
+
+html, body {
+	height:auto;
+	
+}
+
+@import url(//fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
+
+
+body {
+	min-width: 300px;
+	color:#a3a19b;
+	background: #fff;
+
+}
+#search-results{
+	background: #fff;
+	padding:0px 10px 0px 5px;
+	overflow:hidden;
+	 color: #bababa;
+    font: 13px/18px 'Trebuchet MS', Arial, Helvetica, sans-serif;
+
+}
+
+
+h3 {
+	font-size: 30px;
+	line-height: 30px;
+	padding-top: 51px;
+	margin-bottom: 20px;
+}
+
+
+#search-results iframe html{
+	border:none;
+}
+#search-results iframe {
+	min-width:300px;
+}
+
+
+.search_link {
+	padding-top: 4px;
+	display: inline-block;
+	padding-left: 5px;
+	font-size: 18px;
+	font-weight: bold !important;
+	line-height: 24px;	
+	font-family: 'Open Sans Condensed', sans-serif;
+	text-shadow: none;
+	color: #2b2b2b;
+	text-transform: uppercase;
+
+}
+
+.search_link:hover {
+	color: #10a1d6;
+}
+
+h4 {
+margin-left: 0px;	
+}
+
+
+ol.search_list {
+	list-style-type:none;
+	counter-reset: ol;
+	padding-left: 0;
+	margin-left: 15px;
+}
+ol.search_list li:before {
+content: counter(ol) ".";
+counter-increment: ol;
+float:left;
+display:block;
+width:20px;
+text-align:right;	
+padding-right:10px;
+margin:8px 0px 0 -40px
+}
+ol.search_list li {
+	padding-bottom:20px;
+	margin-left:15px;
+	background: none !important;
+}
+span.match {
+	color:#10a1d6;
+	font-size:11px;
+	display:block;
+	
+	
+}
+span.search {
+	color:#10a1d6;
+
+}
+.search_link{
+	text-decoration: none;
+}
+.search_link:hover{
+	text-decoration: underline;
+}

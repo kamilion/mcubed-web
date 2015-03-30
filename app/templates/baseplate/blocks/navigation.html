@@ -1,0 +1,47 @@
+<!-- begin navigation.html -->
+<!--==============================header=================================-->
+	<header>
+		<div class="container_12">
+			<div class="grid_12">
+				<h1>
+				<a href="{{ url_for('PagesView:index') }}">
+				  <img src="{{ url_for('static', filename='images/iconlogos/whitelogo.png') }}" alt="Your Happy Family">
+				</a>
+				</h1>
+				<div class="slogan">Leaders in asset optimization <br> RoHS • WEEE • ISO 14001 Certified </div>
+				<div class="h_search">
+				{% if not current_user.id -%}
+					<a href="{{ url_for('AuthView:index') }}">Log in</a>
+				{% if not registration %}
+					<a href="{{ url_for('AuthView:no_register') }}">Register</a>
+				{% else %}
+					<a href="{{ url_for('AuthView:new_user') }}">Register</a>
+				{% endif %}
+				{%- else -%}
+					<a href="{{ url_for('AuthView:logout') }}">Log out</a>
+					<a href="{{ url_for('AuthView:passwd') }}">Change Password</a>
+				{%- endif %}
+                            <!--
+				<form id="search" action="search.php" method="GET">
+					<input type="text" name="s" value="Search" onfocus="if (this.value == 'Search') {this.value=''}" onblur="if (this.value == '') {this.value='Search'}">
+					<a onClick="document.getElementById('search').submit()" class=""></a>
+					<div class="clear"></div>
+					</form> -->
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="menu_block ">
+			<div class="container_12">
+				<div class="grid_12">
+					<nav class="horizontal-nav full-width horizontalNav-notprocessed">
+						<ul class="sf-menu">
+							{% include 'baseplate/blocks/navmenu-user.html' %}
+						</ul>
+					</nav>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</header>
+<!-- end navigation.html -->

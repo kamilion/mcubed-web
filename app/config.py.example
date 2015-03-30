@@ -1,0 +1,53 @@
+
+__author__ = 'Kamilion@gmail.com'
+########################################################################################################################
+## Site Specific Configuration Definitions
+########################################################################################################################
+
+# Open Registration?
+allow_new_users = False
+
+########################################################################################################################
+## Flask Configuration Definitions
+########################################################################################################################
+
+# CSRF protection
+secret_key = "homestarrunnerisawinner"
+
+# API Endpoint protection
+api_key = "yourheadasplode"
+
+# Debugging?
+debug = True
+
+
+########################################################################################################################
+## RethinkDB Configuration Definitions
+########################################################################################################################
+# rethink config
+rdb = {
+    'host': 'localhost',
+    'port': 28015,
+    'auth_key': '',
+    'userdb': 'kaizen_auth:users',
+    'ticketsdb': 'kaizen:tickets',
+    'pagedb': 'kaizen:pages'
+}
+
+########################################################################################################################
+## YubiCo Configuration Definitions
+########################################################################################################################
+
+yubico_keys = {  # Used in authmodel.py
+    'client_id': '12345',
+    'secret_key': 'thatsamazingitsthesamekeyiuseformyluggage'
+}
+
+########################################################################################################################
+## Stripe Configuration Definitions
+########################################################################################################################
+
+stripe_keys = {  # Used in billingmodel.py
+    'secret_key': 'sk_test_JCpSUX6gOBRacHaVJDiCKTbi',
+    'publishable_key': 'pk_test_LhrTHEeEDuDEaBiDeSpvbPM6'
+}

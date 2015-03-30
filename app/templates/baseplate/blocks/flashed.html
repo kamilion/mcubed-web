@@ -1,0 +1,6 @@
+<!-- begin flashed messages -->
+{% for message in get_flashed_messages() %}
+       <p><br></p>
+	<div class="alert alert-info" style="text-align:center;font-size:35px;font-family: 'Open Sans Condensed', sans-serif;">{{ message }}</div>
+{% endfor %}
+<!-- end flashed messages -->

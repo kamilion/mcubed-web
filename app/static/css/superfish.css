@@ -1,0 +1,254 @@
+
+.menu_block  {
+	margin-top: 8px;
+	z-index: 999;
+	position: relative;
+	background-color: #10a1d6;
+	box-shadow: inset 0 1px 2px #0f9cd1;
+}
+
+.oth {
+	float: right;
+
+	padding-top: 107px;
+}
+
+.menu_block nav {
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+
+nav>.sf-menu {
+	z-index: 990;
+	text-align: left;
+	position: relative;
+}
+nav{ position:relative;padding: 0px 0 0 0;}
+.sf-menu ul {position:absolute;top:-999px; display:none;/* left offset of submenus need to match (see below) */}
+.sf-menu li {float:left;position:relative; }
+.sf-menu>li {
+	display: block;
+	position: relative;
+	float: left;
+	text-transform: uppercase;
+	font-size: 18px;
+	line-height: 18px;
+}
+
+.sf-menu>li+li {
+	margin-left: -20px;
+
+}
+
+
+.sf-menu>li>ul>li {
+  float: none;
+  position: static;
+}
+
+
+.sf-menu>li>a{
+	letter-spacing: 1px;
+	padding: 17px 53px 21px 64px;
+	display: block;
+	text-align: left;
+	overflow: hidden;
+	position: relative;
+	color: #60d0fc;
+}
+.sf-menu>li+li>a {
+	padding-left: 46px;
+	padding-right: 42px;
+}
+
+.sf-menu>li>a:hover,
+.sf-menu>li.current>a,
+.sf-menu>li.sfHover>a {
+	background-color: #12b2f0;
+	color: #fff;
+}
+
+
+.sf-menu>li>a.sf-with-ul:after {
+	position: absolute;
+	content: '';
+	left: 50%;
+	margin-left: -3px;
+	width: 5px;
+	background: url(../images/iconlogos/arrows.png) 0 0 no-repeat;
+	height: 4px;
+	bottom: 10px;
+	pointer-events: none;
+	z-index: 999;
+	display: block;
+}
+
+
+.sf-menu>li.sfHover>a.sf-with-ul:after, 
+.sf-menu>li.current>a.sf-with-ul:after {
+
+}
+
+
+ 
+.sf-menu>li>ul>li>a.sf-with-ul:after {
+	content: '';
+	position: absolute;
+	width: 5px;
+	background: url(../images/iconlogos/arrows.png) 0 0 no-repeat;
+	height: 4px;
+	right: 20px;
+	bottom: 11px;
+	pointer-events: none;
+	z-index: 999;
+}
+
+
+.sf-menu>li>ul>li.sfHover>a.sf-with-ul:after {
+	background-position: 0 bottom;
+}
+
+.sf-menu a{
+
+}
+
+
+
+/*================================>> 2 Level <<========================================*/
+.sf-menu li ul,.sf-menu li.sfHover>ul{
+	left: 0px;
+	z-index: 999; 
+	padding-top: 20px;
+	width: 100%;
+	top: 56px;
+	padding-bottom: 28px;
+	background-color: #12b2f0;
+
+}
+
+
+.sf-menu li ul li{
+	position: relative;
+	text-align: left;
+
+	letter-spacing: 1px;
+	float: none !important;
+	font-size: 18px;
+	line-height: 18px;
+	text-transform: uppercase;
+
+}
+
+.sf-menu li ul li+li {
+
+}
+
+
+.sf-menu li ul li a{
+	position: relative;
+	z-index: 999;
+	display: block;
+	padding: 4px 5px 5px 22px;
+	color:#fff;	
+
+}
+
+
+
+
+
+.sf-menu li li a:hover, 
+.sf-menu li.sfHover li.sfHover>a {  
+	background-color: #fff;
+	color: #12b2f0;
+
+}
+
+/*================================>> 3 Level <<========================================*/
+.sf-menu li.sfHover li.sfHover ul{
+
+	padding-top: 0px;
+	padding-bottom: 0px;
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 100%;
+
+}
+
+
+.sf-menu li.sfHover li.sfHover ul li {
+
+}
+
+.sf-menu li.sfHover li.sfHover ul li a {
+	color: #fff;
+	padding-left: 42px;
+	padding-right: 0;
+}
+
+.sf-menu li.sfHover li.sfHover ul li a:hover {
+	background-color: #10a1d6;
+}
+
+/*==================================RESPONSIVE LAYOUTS===============================================*/
+@media only screen and (max-width: 995px) {
+
+	.sf-menu>li>a {
+		padding-left: 30px !important;
+		padding-right: 30px !important;
+
+	}
+
+	.sf-menu>li+li {
+		margin-left: 0;
+	}
+
+	.sf-menu li.sfHover li.sfHover ul li a {
+		padding-left: 22px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.menu_block {
+		float: none !important;
+		padding: 20px 10px 25px !important;
+		clear: both;
+		min-height: 0px;
+  		border: none;
+  		width: auto;
+	}
+
+	
+
+  header nav{
+  	border: none !important;
+		float:none !important;
+		font:12px/15px Arial, Helvetica, sans-serif;
+		text-transform:uppercase;
+		color:#927c67;
+		margin: 0 auto;
+		
+	
+	}
+
+	
+
+  header nav ul {
+  	border: none;
+  }
+
+	.sf-menu{display:none !important; float: none;}
+
+	#mm0{
+		font:12px/15px Arial, Helvetica, sans-serif;
+		color:#202020;
+		width:100%;
+		margin: 0 auto;
+		float: none;
+    outline: none;
+		border:2px solid #fff;
+	}
+	
+
+}

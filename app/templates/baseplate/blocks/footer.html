@@ -1,0 +1,32 @@
+<!-- begin footer.html -->
+<!--==============================footer=================================-->
+	<footer>   
+		<div class="container_12">
+			<div class="grid_3 fright">
+				<h3>Services</h3>
+				<ul class="list">
+					<li><a href="{{ url_for('PagesView:get', uuid='1249fd8b-164c-489c-9db9-13ae3c15cd8b') }}">RoHS Compliance</a></li>
+					<li><a href="{{ url_for('PagesView:get', uuid='1249fd8b-164c-489c-9db9-13ae3c15cd8b') }}">Global WEEE Compliance</a></li>
+				</ul>
+			</div>
+			<div class="grid_3 fright">
+				<h3>Contact Us</h3>
+				<ul class="list">
+					<li><a href="{{ url_for('TicketsView:index') }}">Contact Us</a></li>
+					<li><a href="{{ url_for('BaseView:about') }}">About Us</a></li>
+				</ul>
+			</div>
+                     <!-- There can be one more grid_3 fright divs here, as above. -->
+			<div class="grid_3">
+				
+					<a href="{{ url_for('BaseView:index') }}" class="f_logo">
+						<img src="{{ url_for('static', filename='images/iconlogos/f_logo.png') }}" alt="">
+				</a>
+				<div class="clear"></div>
+				<div class="copy">
+				&copy; <span id="copyright-year"></span> | <a href="{{ url_for('BaseView:privacy') }}">Privacy Policy</a><div></div>
+				</div>
+			</div>
+		</div>  
+	</footer>
+<!-- end footer.html -->
