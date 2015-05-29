@@ -13,6 +13,7 @@ from wtforms.validators import DataRequired
 # Our own Tickets model
 from tickets.ticketsmodel import Ticket
 
+from app.mailer import compose_email_and_send
 
 ########################################################################################################################
 ## Class Definitions
@@ -49,7 +50,23 @@ class TicketForm(Form):
 
         ticket = Ticket.create(self.name.data, self.email.data, self.phone.data, self.message.data)
 
+        # Create the body of the message (a plain-text and an HTML version).
+        text = "Hi!\nA new ticket has been created by {}.\nHere is the link:\nhttp://www.m-cubed.com/tickets/{}".format(ticket.name, ticket.id)
+        html = """\
+        <html>
+          <head></head>
+          <body>
+            <p>Hi!<br>
+               A new ticket has been created by {}.<br>
+               Here is the <a href="http://www.m-cubed.com/tickets/{}">link</a> to the ticket.
+            </p>
+          </body>
+        </html>
+        """.format(ticket.name, ticket.id)
+        subject = "[Ticket] A new ticket has been created by {}.".format(ticket.name)
+
         if ticket is not None:
+            compose_email_and_send(text, html, subject, 'mteam@m-cubed.com')
             return True
         else:
             return False
