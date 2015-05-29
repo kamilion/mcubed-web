@@ -35,7 +35,17 @@ class TicketsView(FlaskView):
 
     def index(self):
         form = TicketForm()
-        return render_template('tickets/ticketform.html', form=form)
+        return render_template('tickets/ticketform-default.html', form=form)
+
+    @route('/fireeye', endpoint='fireeye', methods=['GET'])
+    def fireeye(self):
+        form = TicketForm()
+        return render_template('tickets/ticketform-fireeye.html', form=form)
+
+    @route('/riverbed', endpoint='riverbed', methods=['GET'])
+    def riverbed(self):
+        form = TicketForm()
+        return render_template('tickets/ticketform-riverbed.html', form=form)
 
     @route('do_ticket', methods=['POST'])
     def do_ticket(self):
@@ -48,7 +58,7 @@ class TicketsView(FlaskView):
             #login_user(form.user, remember=True)
             flash('Message Sent.', 'success')
             return redirect(request.args.get('next') or url_for('TicketsView:index'))
-        return render_template('tickets/ticketform.html', form=form)
+        return render_template('tickets/ticketform-default.html', form=form)
 
     @login_required
     def admin(self):
