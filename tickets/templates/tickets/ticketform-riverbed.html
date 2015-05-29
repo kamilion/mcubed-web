@@ -1,0 +1,83 @@
+{% extends "baseplate/layout.html" %}
+{% block header_title %}Contact Us{% endblock %}
+{% block header_css_pre %}
+<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/form.css') }}">
+{% endblock header_css_pre %}
+{% block body %}
+<!--==============================Content=================================-->
+
+<div class="content">
+  <div class="container_12">
+	<div class="grid_8">
+              {%- include 'baseplate/blocks/flashed.html' -%}
+		<h3>Riverbed Loyalty Program</h3>
+			<p>
+			<br>
+			<strong>Please enter your contact details, you will be sent a set of Trade-Up Loyalty Program forms.</strong>
+			<br>
+			<br>Forms should arrive via email within 1 business day in the Acrobat PDF Format.<br>
+			</p>
+			<p>
+			<br>
+			<h3>M-Cubed Global's Shipping Address</h3>
+					<span>
+							<strong>M-Cubed Global</strong><br>
+							1510 Dell Ave Ste A<br>
+							Campbell, CA 95008-6917<br>
+							Telephone: +1 408 752 1560<br>
+							Fax: +1 408 752 1575<br>
+							Email: mteam@m-cubed.com<br>
+					</span>
+			</p>
+
+
+		<h3>Worldwide Coverage Map</h3>
+			<div>
+				<a href="{{ url_for('static', filename='pdf/m-cubed_list_of_countries.pdf') }}">
+					<img src='/static/images/worldlocations_map.jpg' border='0' height='300' width='400' />
+					<div class="copy">Click here for a list of countries in our service areas</div>
+				</a>
+			</div>
+
+	</div>
+	<div class="grid_4">
+	  <h3>contact us</h3>
+			<form id="form" action="{{ url_for('TicketsView:do_ticket') }}" method=post>
+					  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+					  {{ form.csrf_token }}
+					  <div class="success_wrapper">
+					  <div class="success-message">Loyalty Program request submitted</div>
+					  </div>
+					  <label class="name">
+					  {{ form.name(placeholder='Name') }}
+					  <span class="empty-message">*This field is required.</span>
+					  <span class="error-message">*This is not a valid name.</span>
+					  </label>
+					
+					  <label class="email">
+					  {{ form.email(placeholder='Email Address') }}
+					  <span class="empty-message">*This field is required.</span>
+					  <span class="error-message">*This is not a valid email.</span>
+					  </label>
+					   <label class="phone">
+						  {{ form.phone(placeholder='Phone Number') }}
+						  <span class="empty-message">*This field is required.</span>
+						  <span class="error-message">*This is not a valid phone.</span>
+						  </label>
+					  <label class="message">
+					  {{ form.message(placeholder='Your Message') }}
+					  <span class="empty-message">*This field is required.</span>
+					  <span class="error-message">*The message is too short.</span>
+					  </label>
+					  <div>
+					  <div class="clear"></div>
+					  <div class="btns">
+					  <a href="#" onclick="$(this).closest('form').submit()" data-type="submit" class="btn">send us a message</a><br>
+                                     <div class="copy"><a href="{{ url_for('BaseView:privacy') }}">Our Privacy Policies</a></div>
+                                     </div>
+					  </div>
+					  </form>   
+	</div>
+  </div>   
+</div>
+{% endblock body %}
