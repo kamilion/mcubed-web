@@ -28,7 +28,8 @@ smtp = {
     'host': 'smtp.gmail.com',
     'port': 587,
     'tls': True,
-    'username': 'strongbad@gmail.com',
+    'replyto': 'strongbad@gmail.com',  # Must be an email address. Messages will originate here by default.
+    'username': 'strongbad@gmail.com',  # Must be a username (MS Exchange likes <domain>\<username> )
     'password': 'thecheat63',
 }
 
