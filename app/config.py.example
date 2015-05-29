@@ -20,6 +20,17 @@ api_key = "yourheadasplode"
 # Debugging?
 debug = True
 
+########################################################################################################################
+## Mail Host Configuration Definitions
+########################################################################################################################
+# smtplib config
+smtp = {
+    'host': 'smtp.gmail.com',
+    'port': 587,
+    'tls': True,
+    'username': 'strongbad@gmail.com',
+    'password': 'thecheat63',
+}
 
 ########################################################################################################################
 ## RethinkDB Configuration Definitions
