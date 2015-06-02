@@ -9,7 +9,7 @@
       <ul class=results>
         <li><em><a href="{{ url_for('TicketsView:get', uuid=results.id) }}">{{ results.meta['updated_at']|safe }}</a> </em> <br>
         Name: {{ results.meta['name']|safe }}<br>
-        Email: {{ results.meta['email']|safe }}<br>
+        Email: <a href="mailto:{{ results.meta['email']|safe }}">{{ results.meta['email']|safe }}</a><br>
         Phone: {{ results.meta['phone']|safe }}<br>
         Message:<br>{{ results.message|safe }}<br>
       </ul>
