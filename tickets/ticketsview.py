@@ -35,16 +35,19 @@ class TicketsView(FlaskView):
 
     def index(self):
         form = TicketForm()
+        form.source.data = "ContactUs"
         return render_template('tickets/ticketform-default.html', form=form)
 
     @route('/fireeye', endpoint='fireeye', methods=['GET'])
     def fireeye(self):
         form = TicketForm()
+        form.source.data = "fireeye"
         return render_template('tickets/ticketform-fireeye.html', form=form)
 
     @route('/riverbed', endpoint='riverbed', methods=['GET'])
     def riverbed(self):
         form = TicketForm()
+        form.source.data = "riverbed"
         return render_template('tickets/ticketform-riverbed.html', form=form)
 
     @route('do_ticket', methods=['POST'])

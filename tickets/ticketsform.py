@@ -7,7 +7,7 @@
 from flask import flash
 from flask.ext.wtf import Form
 from flask.ext.login import current_user
-from wtforms.fields import TextField, TextAreaField, PasswordField
+from wtforms.fields import TextField, TextAreaField, PasswordField, HiddenField
 from wtforms.validators import DataRequired
 
 # Our own Tickets model
@@ -24,6 +24,7 @@ class TicketForm(Form):
     A simple Ticket form.
     Will create Tickets and may provide a Ticket object, if found, to the View.
     """
+    source = HiddenField('source')
     name = TextField('name', validators=[DataRequired()])
     email = TextField('email', validators=[DataRequired()])
     phone = TextField('phone', validators=[DataRequired()])
@@ -48,7 +49,7 @@ class TicketForm(Form):
             flash('A required field is empty', 'error')
             return False
 
-        ticket = Ticket.create(self.name.data, self.email.data, self.phone.data, self.message.data)
+        ticket = Ticket.create(self.source.data, self.name.data, self.email.data, self.phone.data, self.message.data)
 
         # Create the body of the message (a plain-text and an HTML version).
         text = "Hi!\nA new ticket has been created by {}.\nHere is the link:\nhttp://www.m-cubed.com/tickets/{}".format(ticket.name, ticket.id)

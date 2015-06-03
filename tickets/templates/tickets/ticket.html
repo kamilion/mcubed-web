@@ -8,6 +8,7 @@
       <h3><a href="{{ url_for('TicketsView:admin') }}">User Submitted Tickets</a></h3>
       <ul class=results>
         <li><em><a href="{{ url_for('TicketsView:get', uuid=results.id) }}">{{ results.meta['updated_at']|safe }}</a> </em> <br>
+        Source: {{ results.meta['source']|safe }}<br>
         Name: {{ results.meta['name']|safe }}<br>
         Email: <a href="mailto:{{ results.meta['email']|safe }}">{{ results.meta['email']|safe }}</a><br>
         Phone: {{ results.meta['phone']|safe }}<br>

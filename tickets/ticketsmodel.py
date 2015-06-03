@@ -91,6 +91,11 @@ class Ticket():
 
         # These fields may potentially be missing.
         try:
+            self.source = results['meta']['source']
+        except KeyError:
+            self.source = "Unknown Source"
+
+        try:
             self.name = results['meta']['name']
         except KeyError:
             self.name = "No Name"
@@ -115,12 +120,12 @@ class Ticket():
         except KeyError:
             self.results = {}
 
-        print("TICKETSMODEL: Ticket_ID: {} Name: {} Phone: {} Email: {}".format(
-            self.id, self.name, self.phone, self.email))
+        print("TICKETSMODEL: Ticket_ID: {} Source: {} Name: {} Phone: {} Email: {}".format(
+            self.id, self.source, self.name, self.phone, self.email))
 
     # Convenience method
     @classmethod
-    def create(cls, name, email, phone, message):
+    def create(cls, source, name, email, phone, message):
         """
         Create a new Ticket entry.
         @return: A Ticket object instantiated from the supplied data or None.
@@ -128,6 +133,7 @@ class Ticket():
         try:  # To make the database entry with the user_id
             db = rdb[cdb].split(':')
             inserted = r.db(db[0]).table(db[1]).insert({'meta': {
+                "source": source,
                 "name": name,
                 "email": email,
                 "phone": phone,
@@ -182,5 +188,5 @@ class Ticket():
                 return None
 
     def __repr__(self):
-        return '<Ticket {} Name: {} Phone: {} Email: {}>'.format(
-            self.id, self.name, self.phone, self.email)
+        return '<Ticket {} Source: {} Name: {} Phone: {} Email: {}>'.format(
+            self.id, self.source, self.name, self.phone, self.email)
