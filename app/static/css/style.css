@@ -57,10 +57,10 @@ img {
 /****Heads****/
 
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, h7, h8, h9 {
     font-family:  'Open Sans Condensed', sans-serif;
-	color: #fff;
-	font-weight: normal;
+    color: #fff;
+    font-weight: normal;
     font-weight: bold;
 }
 
@@ -81,6 +81,43 @@ h3.head1 {
     padding-top: 0;
     margin-bottom: 0;
     line-height: 24px;
+}
+
+h4 {
+    font-size: 24px;
+    line-height: 26px;
+    color: #2b2b2b;
+    text-transform: uppercase;
+}
+
+h5 {
+    font-size: 20px;
+    line-height: 22px;
+    color: #2b2b2b;
+}
+
+h6 {
+    font-size: 16px;
+    line-height: 18px;
+    color: #2b2b2b;
+    text-transform: uppercase;
+}
+
+h7 {
+    font-size: 16px;
+    line-height: 18px;
+    color: #2b2b2b;
+}
+
+h8 {
+    font-size: 14px;
+    color: #2b2b2b;
+    text-transform: uppercase;
+}
+
+h9 {
+    font-size: 14px;
+    color: #2b2b2b;
 }
 
 /****Lists****/
