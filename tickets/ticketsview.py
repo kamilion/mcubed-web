@@ -66,7 +66,7 @@ class TicketsView(FlaskView):
     @login_required
     def admin(self):
         db = rdb[cdb].split(':')
-        selection = list(r.db(db[0]).table(db[1]).run(g.rdb_conn))
+        selection = list(r.db(db[0]).table(db[1]).order_by(r.desc(lambda date: date['meta']['updated_at'])).run(g.rdb_conn))
         if selection is not None:
             print(selection)
             return render_template('tickets/ticketslist.html', results=selection)

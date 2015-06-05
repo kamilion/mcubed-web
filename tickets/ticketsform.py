@@ -67,7 +67,12 @@ class TicketForm(Form):
         subject = "[Ticket] A new ticket has been created by {}.".format(ticket.name)
 
         if ticket is not None:
-            compose_email_and_send(text, html, subject, 'mteam@m-cubed.com')
+            if self.source.data=='fireeye':
+              compose_email_and_send(text, html, subject, 'FireEye.TB@m-cubed.com')
+            elif self.source.data=='riverbed':
+              compose_email_and_send(text, html, subject, 'rb@m-cubed.com')
+            else:
+              compose_email_and_send(text, html, subject, 'mteam@m-cubed.com')
             return True
         else:
             return False
