@@ -1,6 +1,14 @@
 <!-- begin flashed messages -->
-{% for message in get_flashed_messages() %}
-       <p><br></p>
-	<div class="alert alert-info" style="text-align:center;font-size:35px;font-family: 'Open Sans Condensed', sans-serif;">{{ message }}</div>
-{% endfor %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <p><br></p>
+    <div class="alert"> 
+      <ul class="alert">
+      {% for category, message in messages %}
+        <li class="big-alert alert-{{ category }}">{{ category }}: {{ message }}</li>
+      {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endwith %}
 <!-- end flashed messages -->

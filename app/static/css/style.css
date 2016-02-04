@@ -237,6 +237,57 @@ a.btn:hover {
 .nowrap {
     white-space: nowrap;
 }
+
+/*alerts*/
+
+.big-alert {
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 35px;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.big-alert.alert-info {
+	color: #10a1d6;
+}
+
+.big-alert.alert-success {
+	color: #10a1d6;
+}
+
+.big-alert.alert-warning {
+	color: #c02020;
+}
+
+.big-alert.alert-error {
+	color: #f02020;
+}
+
+
+.alert {
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 16px;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.alert.alert-info {
+	color: #10a1d6;
+}
+
+.alert.alert-success {
+	color: #10a1d6;
+}
+
+.alert.alert-warning {
+	color: #c02020;
+}
+
+.alert.alert-error {
+	color: #f02020;
+}
+
+
 /*header*/
 
 

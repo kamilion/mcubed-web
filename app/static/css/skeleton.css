@@ -52,7 +52,7 @@
     .container_12 .grid_9			{ width: 700px; }
     .container_12 .grid_10			{ width: 780px; }
     .container_12 .grid_11			{ width: 860px; }
-    .container_12 .grid_12			{ width: 940px; }
+    .container_12 .grid_12			{ width: 1000px; }
 	/* Prefix Extra Space >> 12 Columns */
 	.container_12 .prefix_1 		{padding-left:80px;}
 	.container_12 .prefix_2 		{padding-left:160px;}
@@ -112,7 +112,7 @@
         .container_12 .grid_9 			{ width: 556px; }
         .container_12 .grid_10			{ width: 620px; }
         .container_12 .grid_11			{ width: 684px; }
-        .container_12 .grid_12			{ width: 748px; }
+        .container_12 .grid_12			{ width: 785px; }
 		/* Prefix Extra Space >> 12 Columns */
 		.container_12 .prefix_1 		{padding-left:64px;}
 		.container_12 .prefix_2 		{padding-left:128px;}

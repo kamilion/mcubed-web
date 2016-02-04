@@ -1,0 +1,35 @@
+{% extends "baseplate/layout.html" %}
+{% block header_title %}Contact Us{% endblock %}
+
+{% block header_css_pre %}
+<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/form.css') }}">
+{% endblock header_css_pre %}
+
+{% block header_js_loads %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock header_js_loads %}
+
+{% block body %}
+<!--==============================Content=================================-->
+
+<div class="content">
+  <div class="container_12">
+	<div class="grid_8">
+              {%- include 'baseplate/blocks/flashed.html' -%}
+		<h3>Wind River Loyalty Program</h3>
+			<p>
+			<br>
+			<img src="{{ url_for('static', filename='images/iconlogos/partner-windriver-logo.png') }}" alt="Wind River Logo">
+			<br>
+			<br>
+			<strong>Please enter your contact details, you will be sent a set of Trade-Up Loyalty Program forms.</strong>
+		{%- include 'tickets/blocks/shippingaddress.html' -%}
+		{%- include 'tickets/blocks/coveragemap.html' -%}
+	</div>
+	<div class="grid_4">
+		{%- include 'tickets/blocks/ticketform.html' -%}
+	</div>
+
+  </div>   
+</div>
+{% endblock body %}

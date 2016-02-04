@@ -1,0 +1,38 @@
+	  <h3>contact us</h3>
+			<form id="form" action="{{ url_for('TicketsView:do_ticket') }}" method=post>
+					  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+					  {{ form.hidden_tag() }}
+					  <div class="success_wrapper">
+					  <div class="success-message">Contact form submitted</div>
+					  </div>
+					  <label class="name">
+					  {{ form.name(placeholder='Name') }}
+					  <span class="empty-message">*This field is required.</span>
+					  <span class="error-message">*This is not a valid name.</span>
+					  </label>
+					
+					  <label class="email">
+					  {{ form.email(placeholder='Email Address') }}
+					  <span class="empty-message">*This field is required.</span>
+					  <span class="error-message">*This is not a valid email.</span>
+					  </label>
+					   <label class="phone">
+						  {{ form.phone(placeholder='Phone Number') }}
+						  <span class="empty-message">*This field is required.</span>
+						  <span class="error-message">*This is not a valid phone.</span>
+						  </label>
+					  <label class="message">
+					  {{ form.message(placeholder='Your Message') }}
+					  <span class="empty-message">*This field is required.</span>
+					  <span class="error-message">*The message is too short.</span>
+					  </label>
+					  <div>
+					  <div class="clear"></div>
+                                     <br>
+                                     <div class="g-recaptcha" data-sitekey="6LeRVxcTAAAAADgi62dFEkmlu7smHEutn7UZVTsz"></div>
+					  <div class="btns">
+					  <a href="#" onclick="$(this).closest('form').submit()" data-type="submit" class="btn">send us a message</a><br>
+                                     <div class="copy"><a href="{{ url_for('BaseView:privacy') }}">Our Privacy Policies</a></div>
+                                     </div>
+					  </div>
+					  </form> 

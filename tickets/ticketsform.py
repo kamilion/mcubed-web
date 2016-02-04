@@ -4,22 +4,59 @@
 ########################################################################################################################
 
 # Flask imports
-from flask import flash
+from flask import flash, request, redirect
 from flask.ext.wtf import Form
 from flask.ext.login import current_user
 from wtforms.fields import TextField, TextAreaField, PasswordField, HiddenField
 from wtforms.validators import DataRequired
+# ReCAPTCHA imports
+from flask.ext.wtf.recaptcha import RecaptchaField
+
+# urlparse imports
+from urlparse import urlparse, urljoin
 
 # Our own Tickets model
 from tickets.ticketsmodel import Ticket
 
 from app.mailer import compose_email_and_send
 
+
+########################################################################################################################
+## Helper Functions
+########################################################################################################################
+
+def is_safe_url(target):
+    ref_url = urlparse(request.host_url)
+    test_url = urlparse(urljoin(request.host_url, target))
+    return test_url.scheme in ('http', 'https') and \
+           ref_url.netloc == test_url.netloc
+
+def get_redirect_target():
+    for target in request.values.get('next'), request.referrer:
+        if not target:
+            continue
+        if is_safe_url(target):
+            return target
+
+class RedirectForm(Form):
+    next = HiddenField()
+
+    def __init__(self, *args, **kwargs):
+        Form.__init__(self, *args, **kwargs)
+        if not self.next.data:
+            self.next.data = get_redirect_target() or ''
+
+    def redirect(self, endpoint='index', **values):
+        if is_safe_url(self.next.data):
+            return redirect(self.next.data)
+        target = get_redirect_target()
+        return redirect(target or url_for(endpoint, **values))
+
 ########################################################################################################################
 ## Class Definitions
 ########################################################################################################################
 
-class TicketForm(Form):
+class TicketForm(RedirectForm):
     """
     A simple Ticket form.
     Will create Tickets and may provide a Ticket object, if found, to the View.
@@ -29,6 +66,7 @@ class TicketForm(Form):
     email = TextField('email', validators=[DataRequired()])
     phone = TextField('phone', validators=[DataRequired()])
     message = TextAreaField('message', validators=[DataRequired()])
+    recaptcha = RecaptchaField()
 
     def __init__(self, *args, **kwargs):
         """

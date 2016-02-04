@@ -36,19 +36,61 @@ class TicketsView(FlaskView):
     def index(self):
         form = TicketForm()
         form.source.data = "ContactUs"
-        return render_template('tickets/ticketform-default.html', form=form)
+        return render_template('tickets/ticketform-{}.html'.format(form.source.data), form=form)
 
     @route('/fireeye', endpoint='fireeye', methods=['GET'])
     def fireeye(self):
         form = TicketForm()
         form.source.data = "fireeye"
-        return render_template('tickets/ticketform-fireeye.html', form=form)
+        return render_template('tickets/ticketform-{}.html'.format(form.source.data), form=form)
+
+    @route('/fireeye-eval', endpoint='fireeye_eval', methods=['GET'])
+    def fireeye_eval(self):
+        form = TicketForm()
+        form.source.data = "fireeye-eval"
+        return render_template('tickets/ticketform-{}.html'.format(form.source.data), form=form)
 
     @route('/riverbed', endpoint='riverbed', methods=['GET'])
     def riverbed(self):
         form = TicketForm()
         form.source.data = "riverbed"
-        return render_template('tickets/ticketform-riverbed.html', form=form)
+        return render_template('tickets/ticketform-{}.html'.format(form.source.data), form=form)
+
+    @route('/aurora', endpoint='aurora', methods=['GET'])
+    def aurora(self):
+        form = TicketForm()
+        form.source.data = "aurora"
+        return render_template('tickets/ticketform-{}.html'.format(form.source.data), form=form)
+
+    @route('/equitrac', endpoint='equitrac', methods=['GET'])
+    def equitrac(self):
+        form = TicketForm()
+        form.source.data = "equitrac"
+        return render_template('tickets/ticketform-{}.html'.format(form.source.data), form=form)
+
+    @route('/inada', endpoint='inada', methods=['GET'])
+    def inada(self):
+        form = TicketForm()
+        form.source.data = "inada"
+        return render_template('tickets/ticketform-{}.html'.format(form.source.data), form=form)
+
+    @route('/windriver', endpoint='windriver', methods=['GET'])
+    def windriver(self):
+        form = TicketForm()
+        form.source.data = "windriver"
+        return render_template('tickets/ticketform-{}.html'.format(form.source.data), form=form)
+
+    @route('/wonderworkshop', endpoint='wonderworkshop', methods=['GET'])
+    def wonderworkshop(self):
+        form = TicketForm()
+        form.source.data = "wonderworkshop"
+        return render_template('tickets/ticketform-{}.html'.format(form.source.data), form=form)
+
+    @route('/nuance', endpoint='nuance', methods=['GET'])
+    def nuance(self):
+        form = TicketForm()
+        form.source.data = "nuance"
+        return render_template('tickets/ticketform-{}.html'.format(form.source.data), form=form)
 
     @route('do_ticket', methods=['POST'])
     def do_ticket(self):
@@ -58,10 +100,9 @@ class TicketsView(FlaskView):
         """
         form = TicketForm()
         if form.validate_on_submit():
-            #login_user(form.user, remember=True)
             flash('Message Sent.', 'success')
             return redirect(request.args.get('next') or url_for('TicketsView:index'))
-        return render_template('tickets/ticketform-default.html', form=form)
+        return render_template('tickets/ticketform-{}.html'.format(form.source.data), form=form)
 
     @login_required
     def admin(self):
