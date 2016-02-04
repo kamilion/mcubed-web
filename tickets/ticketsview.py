@@ -127,6 +127,23 @@ class TicketsView(FlaskView):
             return "Not Found", 404
 
     @login_required
+    def archived(self):
+        """
+        Archive of all User Submitted Ticket Flask-WTF forms.
+        @return: A Jinja2 Template containing a Ticket list, or 404.
+        """
+        db = rdb[cdb].split(':')
+        selection = list(r.db(db[0]).table(db[1])
+            .order_by(
+                 r.desc(lambda date: date['meta']['updated_at'])
+            ).run(g.rdb_conn))
+        if selection is not None:
+            #print(selection)
+            return render_template('tickets/ticketslist.html', results=selection)
+        else:
+            return "Not Found", 404
+
+    @login_required
     def get(self, uuid):
         """
         Admin of User Submitted Ticket Flask-WTF forms.
