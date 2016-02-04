@@ -3,28 +3,28 @@
 					{{ form.hidden_tag() }}
 
 					{% for error in form.name.errors %}
-						<strong class="alert alert-error">{{ error }}</strong>
+						<br><strong class="alert alert-error">{{ error }}</strong><br>
 					{% endfor %}
 					<label class="name">
 						{{ form.name(placeholder='Name') }}
 					</label>
 
 					{% for error in form.email.errors %}
-						<strong class="alert alert-error">{{ error }}</strong>
+						<br><strong class="alert alert-error">{{ error }}</strong><br>
 					{% endfor %}					
 					<label class="email">
 						{{ form.email(placeholder='Email Address') }}
 					</label>
 
 					{% for error in form.phone.errors %}
-						<strong class="alert alert-error">{{ error }}</strong>
+						<br><strong class="alert alert-error">{{ error }}</strong><br>
 					{% endfor %}
 					<label class="phone">
 						{{ form.phone(placeholder='Phone Number') }}
 					</label>
 
 					{% for error in form.message.errors %}
-						<strong class="alert alert-error">{{ error }}</strong>
+						<br><strong class="alert alert-error">{{ error }}</strong><br>
 					{% endfor %}
 					<label class="message">
 						{{ form.message(placeholder='Your Message') }}
@@ -35,7 +35,7 @@
 						<br>
 
 						{% for error in form.recaptcha.errors %}
-							<strong class="alert alert-error">{{ error }}</strong>
+							<br><strong class="alert alert-error">{{ error }}</strong><br>
 						{% endfor %}
 						{{ form.recaptcha }}
 

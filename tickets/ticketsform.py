@@ -64,7 +64,7 @@ class TicketForm(RedirectForm):
     source = HiddenField('source')
     name = TextField('name', validators=[DataRequired()])
     email = TextField('email', validators=[DataRequired()])
-    phone = TextField('phone', validators=[DataRequired()])
+    phone = TextField('phone')
     message = TextAreaField('message', validators=[DataRequired()])
     recaptcha = RecaptchaField()
 
