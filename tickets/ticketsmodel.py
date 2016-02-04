@@ -111,6 +111,11 @@ class Ticket():
             self.phone = "No Phone Number"
 
         try:
+            self.archived = results['meta']['archived']
+        except KeyError:
+            self.archived = False
+
+        try:
             self.message = results['message']
         except KeyError:
             self.message = "Empty Message"
@@ -120,8 +125,8 @@ class Ticket():
         except KeyError:
             self.results = {}
 
-        print("TICKETSMODEL: Ticket_ID: {} Source: {} Name: {} Phone: {} Email: {}".format(
-            self.id, self.source, self.name, self.phone, self.email))
+        print("TICKETSMODEL: Ticket_ID: {} Source: {} Name: {} Phone: {} Email: {} Archived: {}".format(
+            self.id, self.source, self.name, self.phone, self.email, self.archived))
 
     # Convenience method
     @classmethod
@@ -144,6 +149,23 @@ class Ticket():
             return None
 
         return Ticket(inserted['generated_keys'][0])
+
+    def mark_as_archived(self):
+        """
+        Mark a Ticket entry as archived
+        @return: True if the ticket was updated or None.
+        """
+        try:  # To update the database entry with the uuid given
+            db = rdb[cdb].split(':')
+            db_request = r.db(db[0]).table(db[1]).get(self.id).update({'meta': {
+                "archived": r.now()
+                }
+            }).run(g.rdb_conn)
+        except RqlRuntimeError:
+            return None
+
+        return True
+
 
     # Convenience method
     @classmethod
@@ -188,5 +210,5 @@ class Ticket():
                 return None
 
     def __repr__(self):
-        return '<Ticket {} Source: {} Name: {} Phone: {} Email: {}>'.format(
-            self.id, self.source, self.name, self.phone, self.email)
+        return '<Ticket {} Source: {} Name: {} Phone: {} Email: {} Archived: {}>'.format(
+            self.id, self.source, self.name, self.phone, self.email, self.archived)

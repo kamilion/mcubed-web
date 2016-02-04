@@ -1,0 +1,43 @@
+
+        <!-- Start of singleticket -->
+        <em> <h4> <a href="{{ url_for('TicketsView:get', uuid=results.id) }}">{{ results.meta['updated_at']|safe }}</a> <h4> </em> <br>
+        {% if results.meta['source'] == "ContactUs" %}
+        <h4>Source:</h4> <img src="{{ url_for('static', filename='images/iconlogos/f_logo.png') }}" width=200 height=50 alt="M-Cubed Logo"><br>
+        {% endif %}
+        {% if results.meta['source'] == "aurora" %}
+        <h4>Source:</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-aurora-logo.png') }}" width=200 height=50 alt="Aurora Logo"><br>
+        {% endif %}
+        {% if results.meta['source'] == "equitrac" %}
+        <h4>Source:</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-equitrac-logo.png') }}" width=200 height=50 alt="Equitrac Logo"><br>
+        {% endif %}
+        {% if results.meta['source'] == "fireeye" %}
+        <h4>Source:</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-fireeye-logo.png') }}" width=200 height=50 alt="FireEye Logo"><br>
+        {% endif %}
+        {% if results.meta['source'] == "fireeye-eval" %}
+        <h4>Source:</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-fireeye-logo.png') }}" width=200 height=50 alt="FireEye Logo"><br>
+        {% endif %}
+        {% if results.meta['source'] == "inada" %}
+        <h4>Source:</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-inada-logo.png') }}" width=200 height=50 alt="Inada Family Logo"><br>
+        {% endif %}
+        {% if results.meta['source'] == "nuance" %}
+        <h4>Source:</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-nuance-logo.png') }}" width=200 height=50 alt="Nuance Logo"><br>
+        {% endif %}
+        {% if results.meta['source'] == "riverbed" %}
+        <h4>Source:</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-riverbed-logo.png') }}" width=200 height=50 alt="Riverbed Logo"><br>
+        {% endif %}
+        {% if results.meta['source'] == "windriver" %}
+        <h4>Source:</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-windriver-logo.png') }}" width=200 height=50 alt="Wind River Logo"><br>
+        {% endif %}
+        {% if results.meta['source'] == "wonderworkshop" %}
+        <h4>Source:</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-wonderworkshop-logo.png') }}" width=200 height=50 alt="Wonder Workshop Logo"><br>
+        {% endif %}
+        <h4>Name:</h4> <h5>{{ results.meta['name']|safe }}</h5><br>
+        <h4>Email:</h4> <h7><a href="mailto:{{ results.meta['email']|safe }}">{{ results.meta['email']|safe }}</a></h7><br>
+        <h4>Phone:</h4> <h7>{{ results.meta['phone']|safe }}</h7><br>
+        <h4>Message:</h4><br><h7>{{ results.message|safe }}</h7><br><br><br>
+        {% if results.meta['archived'] %}
+        <h4 style="color: #c02020;">Archived</h4><br>
+        {% else %}
+        <h4><a href="{{ url_for('TicketsView:archive', uuid=results.id) }}">Archive</a></h4><br>
+        {% endif %}
+        <!-- End of singleticket -->

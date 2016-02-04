@@ -7,20 +7,7 @@
       {%- include 'baseplate/blocks/flashed.html' -%}
       <h3><a href="{{ url_for('TicketsView:admin') }}">User Submitted Tickets</a></h3>
       <ul class=results>
-        <li> <em> <h4> <a href="{{ url_for('TicketsView:get', uuid=results.id) }}">{{ results.meta['updated_at']|safe }}</a> <h4> </em> <br>
-        {% if results.meta['source'] == "fireeye" %}
-        <h4>Source:</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-fireeye-logo.png') }}" width=200 height=50 alt="FireEye Logo"><br>
-        {% endif %}
-        {% if results.meta['source'] == "riverbed" %}
-        <h4>Source:</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-riverbed-logo.png') }}" width=200 height=50 alt="Riverbed Logo"><br>
-        {% endif %}
-        {% if results.meta['source'] == "ContactUs" %}
-        <h4>Source:</h4> <img src="{{ url_for('static', filename='images/iconlogos/f_logo.png') }}" width=200 height=50 alt="M-Cubed Logo"><br>
-        {% endif %}
-        <h4>Name:</h4> <h5>{{ results.meta['name']|safe }}</h5><br>
-        <h4>Email:</h4> <h7><a href="mailto:{{ results.meta['email']|safe }}">{{ results.meta['email']|safe }}</a></h7><br>
-        <h4>Phone:</h4> <h7>{{ results.meta['phone']|safe }}</h7><br>
-        <h4>Message:</h4><br><h7>{{ results.message|safe }}</h7><br>
+        <li> {%- include 'tickets/blocks/singleticket.html' -%} </li>
       </ul>
     </div>
   </div>   

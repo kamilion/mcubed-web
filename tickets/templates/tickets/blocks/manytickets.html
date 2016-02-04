@@ -1,0 +1,45 @@
+
+        <!-- Start of manytickets -->
+        {% if result.meta['archived'] != False %}
+
+        <em> <h4> <a href="{{ url_for('TicketsView:get', uuid=result.id) }}">{{ result.meta['updated_at']|safe }}</a> <h4> </em> <br>
+        {% if result.meta['source'] == "ContactUs" %}
+        <h4>Source: Contact Form</h4> <img src="{{ url_for('static', filename='images/iconlogos/f_logo.png') }}" width=200 height=50 alt="M-Cubed Logo"><br>
+        {% endif %}
+        {% if result.meta['source'] == "aurora" %}
+        <h4>Source: Aurora Networks</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-aurora-logo.png') }}" width=200 height=50 alt="Aurora Logo"><br>
+        {% endif %}
+        {% if result.meta['source'] == "equitrac" %}
+        <h4>Source: Equitrac</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-equitrac-logo.png') }}" width=200 height=50 alt="Equitrac Logo"><br>
+        {% endif %}
+        {% if result.meta['source'] == "fireeye" %}
+        <h4>Source: FireEye Takeback</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-fireeye-logo.png') }}" width=200 height=50 alt="FireEye Logo"><br>
+        {% endif %}
+        {% if result.meta['source'] == "fireeye-eval" %}
+        <h4>Source: FireEye Evaluation</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-fireeye-logo.png') }}" width=200 height=50 alt="FireEye Logo"><br>
+        {% endif %}
+        {% if result.meta['source'] == "inada" %}
+        <h4>Source: Inada Family</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-inada-logo.png') }}" width=200 height=50 alt="Inada Family Logo"><br>
+        {% endif %}
+        {% if result.meta['source'] == "nuance" %}
+        <h4>Source: Nuance</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-nuance-logo.png') }}" width=200 height=50 alt="Nuance Logo"><br>
+        {% endif %}
+        {% if result.meta['source'] == "riverbed" %}
+        <h4>Source: Riverbed</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-riverbed-logo.png') }}" width=200 height=50 alt="Riverbed Logo"><br>
+        {% endif %}
+        {% if result.meta['source'] == "windriver" %}
+        <h4>Source: Wind River</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-windriver-logo.png') }}" width=200 height=50 alt="Wind River Logo"><br>
+        {% endif %}
+        {% if result.meta['source'] == "wonderworkshop" %}
+        <h4>Source: Wonder Workshop</h4> <img src="{{ url_for('static', filename='images/iconlogos/partner-wonderworkshop-logo.png') }}" width=200 height=50 alt="Wonder Workshop Logo"><br>
+        {% endif %}
+        <h4>Name:</h4> <h5>{{ result.meta['name']|safe }}</h5><br>
+        <h4>Email:</h4> <h7><a href="mailto:{{ result.meta['email']|safe }}">{{ result.meta['email']|safe }}</a></h7><br>
+        <h4>Phone:</h4> <h7>{{ result.meta['phone']|safe }}</h7><br>
+        <h4>Message:</h4><br><h7>{{ result.message|safe }}</h7><br>
+        <br>
+        <hr>
+        <br>
+
+        {% endif %}
+        <!-- End of manytickets -->

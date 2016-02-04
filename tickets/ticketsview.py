@@ -106,20 +106,55 @@ class TicketsView(FlaskView):
 
     @login_required
     def admin(self):
+        """
+        Admin of User Submitted Ticket Flask-WTF forms.
+        The parenthesis around ~ is required to evaluate it on the far end.
+        see https://www.rethinkdb.com/api/python/has_fields/
+        and https://www.rethinkdb.com/api/python/not/
+        @return: A Jinja2 Template containing a Ticket list, or 404.
+        """
         db = rdb[cdb].split(':')
-        selection = list(r.db(db[0]).table(db[1]).order_by(r.desc(lambda date: date['meta']['updated_at'])).run(g.rdb_conn))
+        selection = list(r.db(db[0]).table(db[1])
+            .filter( 
+                 ( ~r.row.has_fields( { 'meta': { 'archived': True } } ) )
+            ).order_by(
+                 r.desc(lambda date: date['meta']['updated_at'])
+            ).run(g.rdb_conn))
         if selection is not None:
-            print(selection)
+            #print(selection)
             return render_template('tickets/ticketslist.html', results=selection)
         else:
             return "Not Found", 404
 
     @login_required
     def get(self, uuid):
+        """
+        Admin of User Submitted Ticket Flask-WTF forms.
+        Returns a single ticket.
+        @return: A Jinja2 Template containing a Ticket, or 404.
+        """
         db = rdb[cdb].split(':')
         selection = r.db(db[0]).table(db[1]).get(uuid).run(g.rdb_conn)
         if selection is not None:
-            print(selection)
+            #print(selection)
             return render_template('tickets/ticket.html', results=selection)
+        else:
+            return "Not Found", 404
+
+    @login_required
+    def archive(self, uuid):
+        """
+        Archival of User Submitted Ticket Flask-WTF forms.
+        @return: A Jinja2 Template containing a Ticket, or 404.
+        """
+        if Ticket(uuid).mark_as_archived():
+          db = rdb[cdb].split(':')
+          selection = r.db(db[0]).table(db[1]).get(uuid).run(g.rdb_conn)
+          if selection is not None:
+              #print(selection)
+              #return render_template('tickets/ticket.html', results=selection)
+              return redirect(url_for('TicketsView:admin'))
+          else:
+              return "Not Found", 404
         else:
             return "Not Found", 404
