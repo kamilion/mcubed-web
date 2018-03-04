@@ -4,6 +4,7 @@
 								<ul>
 									<li><a href="{{ url_for('PagesView:get', uuid='f7a73acf-6b65-472b-b39c-39f5df1f455a') }}">Global Take-back</a></li>
 									<li><a href="{{ url_for('PagesView:get', uuid='6513db97-eb95-4c7c-9b95-4aa3e4aad00e') }}">Data Security</a></li>
+									<li><a href="{{ url_for('PagesView:get', uuid='85e8b272-fe50-4f5f-894a-6202e8de7295') }}">Remote Wiping</a></li>
 									<li><a href="{{ url_for('PagesView:get', uuid='1249fd8b-164c-489c-9db9-13ae3c15cd8b') }}">RoHS &amp; WEEE Assessment</a>
 									<ul>
 										<li><a href="{{ url_for('PagesView:get', uuid='5f39c7a0-3af2-4282-a17e-f6e134d65e47') }}">RoHS Assessment</a></li>
@@ -21,7 +22,12 @@
 									</ul>
 									</li>
 
-									<li><a href="/tickets/riverbed"><img src="{{ url_for('static', filename='images/iconlogos/partner-riverbed-logo.png') }}" alt="Riverbed Logo"></a></li>
+									<li><a href="/tickets/riverbed"><img src="{{ url_for('static', filename='images/iconlogos/partner-riverbed-logo.png') }}" alt="Riverbed Logo"></a>
+									<ul>
+										<a href="http://www.riverbed.com/how-to-buy/trade-up.html"><img src="{{ url_for('static', filename='images/iconlogos/partner-riverbed-logo.png') }}" alt="Riverbed Logo" height="14px">Trade Up</a>
+										<a href="/tickets/riverbed-weee"><img src="{{ url_for('static', filename='images/iconlogos/partner-riverbed-logo.png') }}" alt="Riverbed Logo" height="14px">WEEE Takeback</a>
+									</ul>
+									</li>
 									<li><a href="/tickets/equitrac"><img src="{{ url_for('static', filename='images/iconlogos/partner-equitrac-logo.png') }}" alt="Equitrac Logo"></a></li>
 									<li><a href="/tickets/aurora"><img src="{{ url_for('static', filename='images/iconlogos/partner-aurora-logo.png') }}" alt="Aurora Logo"></a></li>
 									<li><a href="/tickets/windriver"><img src="{{ url_for('static', filename='images/iconlogos/partner-windriver-logo.png') }}" alt="Wind River Logo"></a></li>

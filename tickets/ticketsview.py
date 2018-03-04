@@ -56,6 +56,12 @@ class TicketsView(FlaskView):
         form.source.data = "riverbed"
         return render_template('tickets/ticketform-{}.html'.format(form.source.data), form=form)
 
+    @route('/riverbed-weee', endpoint='riverbed_weee', methods=['GET'])
+    def riverbed_weee(self):
+        form = TicketForm()
+        form.source.data = "riverbed-weee"
+        return render_template('tickets/ticketform-{}.html'.format(form.source.data), form=form)
+
     @route('/aurora', endpoint='aurora', methods=['GET'])
     def aurora(self):
         form = TicketForm()

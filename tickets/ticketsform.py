@@ -15,6 +15,12 @@ from flask.ext.wtf.recaptcha import RecaptchaField
 # urlparse imports
 from urlparse import urlparse, urljoin
 
+# bleach imports
+import bleach
+
+# flask-defer imports
+from flask_defer import FlaskDefer, after_request
+
 # Our own Tickets model
 from tickets.ticketsmodel import Ticket
 
@@ -89,29 +95,57 @@ class TicketForm(RedirectForm):
 
         ticket = Ticket.create(self.source.data, self.name.data, self.email.data, self.phone.data, self.message.data)
 
+        if ticket is not None:
+            after_request(self.send_notification, ticket)
+            return True
+        else:
+            return False
+
+
+    def send_notification(self, ticket):
+        safe_name = bleach.clean(ticket.name)
+        safe_email = bleach.clean(ticket.email)        
+        safe_phone = bleach.clean(ticket.phone)
+        safe_text = bleach.clean(ticket.message)
+
         # Create the body of the message (a plain-text and an HTML version).
-        text = "Hi!\nA new ticket has been created by {}.\nHere is the link:\nhttp://www.m-cubed.com/tickets/{}".format(ticket.name, ticket.id)
-        html = """\
+        text = u"""\
+A new {} ticket has been created. Here is the link:
+http://www.m-cubed.com/tickets/{} 
+
+Date/Time: {}
+Name: {}
+Email: {}
+Phone: {}
+Message: {}
+
+        """.format(ticket.source, ticket.id, ticket.updated_at, safe_name, safe_email, safe_phone, safe_text)
+        html = u"""\
         <html>
           <head></head>
           <body>
-            <p>Hi!<br>
-               A new ticket has been created by {}.<br>
-               Here is the <a href="http://www.m-cubed.com/tickets/{}">link</a> to the ticket.
+            <p>A new {} ticket has been created. Here is the <a href="http://www.m-cubed.com/tickets/{}">link</a> to the ticket.<br><br>
+               Date/Time: {}<br><br>
+               Name: {}<br><br>
+               Email: {}<br><br>
+               Phone: {}<br><br>
+               Message: {}<br><br>
             </p>
           </body>
         </html>
-        """.format(ticket.name, ticket.id)
-        subject = "[Ticket] A new ticket has been created by {}.".format(ticket.name)
+        """.format(ticket.source, ticket.id, ticket.updated_at, safe_name, safe_email, safe_phone, safe_text)
+        subject = u"[Ticket] A new {} ticket has been created by {} ({}).".format(ticket.source, safe_name, safe_email)
 
         if ticket is not None:
             if self.source.data=='fireeye':
               compose_email_and_send(text, html, subject, 'FireEye.TB@m-cubed.com')
+            if self.source.data=='fireeye-eval':
+              compose_email_and_send(text, html, subject, 'FireEye.eval@m-cubed.com')
             elif self.source.data=='riverbed':
               compose_email_and_send(text, html, subject, 'rb@m-cubed.com')
+            elif self.source.data=='riverbed-weee':
+              compose_email_and_send(text, html, subject, 'rb.weee@m-cubed.com')
             else:
-              compose_email_and_send(text, html, subject, 'mteam@m-cubed.com')
-            return True
-        else:
-            return False
+              compose_email_and_send(text, html, subject, 'mtickets@m-cubed.com')
+
 

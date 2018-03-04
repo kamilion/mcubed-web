@@ -7,6 +7,9 @@ __author__ = 'Kamilion@gmail.com'
 # Local site config imports
 from app.config import smtp
 
+# Socket import
+import socket
+
 # SMTP library import
 import smtplib
 
@@ -23,6 +26,7 @@ def send_email(emailtarget, msg):
         mailserver = smtplib.SMTP(smtp['host'], smtp['port']) # Open a connection to the SMTP server.
     except socket.error:
         print("Something went wrong with the socket.")
+        return False
 
     if smtp['tls']: # Then try to connect to the server and open a TLS tunnel.
         tlsresponse = mailserver.ehlo() # Ask the server what it supports, save the result.
@@ -32,19 +36,25 @@ def send_email(emailtarget, msg):
         except smtplib.SMTPException:
             print("\nServer didn't support TLS, falling back to insecure plaintext.")
 
+    print("Connected to {}.".format(smtp['host']))
+
     mailserver.ehlo() # Ask the server what it supports, preferably over the TLS tunnel.
 
+    print("Received EHLO from {}.".format(smtp['host']))
     try: # to log in to the server
         mailserver.login(smtp['username'], smtp['password']) # username format for exchange: 'domain\username'
     except smtplib.SMTPAuthenticationError:
         print("Couldn't authenticate with server using username {}.".format(smtp['username']))
 
+    print("Successfully authenticated with a user account to {}.".format(smtp['host']))
     try: # to send the message
         mailserver.sendmail(smtp['replyto'], emailtarget, msg) # Send the message
     except smtplib.SMTPDataError:
         print("Server refused to accept our message to {}.".format(emailtarget))
 
+    print("Server {} accepted our message.".format(smtp['host']))
     mailserver.quit() # Disconnect from the mailserver.
+    print("Disconnected from {}.".format(smtp['host']))
 
 def bundle_email(emailtext, emailhtml, emailsubject, emailtarget):
     # Create message container - the correct MIME type is multipart/alternative.

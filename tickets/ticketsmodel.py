@@ -80,7 +80,7 @@ class Ticket():
             db = rdb[cdb].split(':')
             results = r.db(db[0]).table(db[1]).get(uuid).run(g.rdb_conn)
         except RqlRuntimeError:
-            print("TICKETSMODEL: InitTicket: Critical Failure: Saving Throw Failed! while looking up UUID: {}".format(uuid))
+            print(u"TICKETSMODEL: InitTicket: Critical Failure: Saving Throw Failed! while looking up UUID: {}".format(uuid))
 
         if results is None:
             raise NoSuchUUIDExists
@@ -125,8 +125,13 @@ class Ticket():
         except KeyError:
             self.results = {}
 
-        print("TICKETSMODEL: Ticket_ID: {} Source: {} Name: {} Phone: {} Email: {} Archived: {}".format(
-            self.id, self.source, self.name, self.phone, self.email, self.archived))
+        #print(
+        #    u"TICKETSMODEL: Ticket_ID: {} Source: {} Name: {} Phone: {} Email: {} Archived: {}".format(
+        #    self.id, self.source, self.name, self.phone, self.email, self.archived ))
+        print(
+            u"TICKETSMODEL: Ticket_ID: {} Source: {} Archived: {}".format(
+            self.id, self.source, self.archived ))
+
 
     # Convenience method
     @classmethod
@@ -210,5 +215,5 @@ class Ticket():
                 return None
 
     def __repr__(self):
-        return '<Ticket {} Source: {} Name: {} Phone: {} Email: {} Archived: {}>'.format(
+        return u'<Ticket {} Source: {} Name: {} Phone: {} Email: {} Archived: {}>'.format(
             self.id, self.source, self.name, self.phone, self.email, self.archived)

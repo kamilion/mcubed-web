@@ -28,6 +28,9 @@ from app.baseview import BaseView
 from auth.authmodel import login_manager
 from auth.authview import AuthView
 
+# flask-defer imports
+from flask_defer import FlaskDefer, after_request
+
 ########################################################################################################################
 ## Imports of Flask-Classy based Views
 ## **EDIT ME**
@@ -57,6 +60,9 @@ flask_core.secret_key = config.secret_key
 
 # Register the flask-uuid extension with the core object
 FlaskUUID(flask_core)
+
+# Register the flask-defer extension with the core object
+FlaskDefer(flask_core)
 
 ########################################################################################################################
 ## Jinja2 Template Directory override
