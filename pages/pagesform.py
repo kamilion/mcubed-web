@@ -5,7 +5,7 @@
 
 # Flask imports
 from flask import flash
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from flask_login import current_user
 from wtforms.fields import TextField, TextAreaField, PasswordField
 from wtforms.validators import DataRequired
@@ -18,7 +18,7 @@ from pages.pagesmodel import Page
 ## Class Definitions
 ########################################################################################################################
 
-class PageForm(Form):
+class PageForm(FlaskForm):
     """
     A simple Page form.
     Will create Pages and may provide a Page object, if found, to the View.
@@ -33,7 +33,7 @@ class PageForm(Form):
         @param args: Arguments, in order of definition in class
         @param kwargs: Keyword based Arguments, in any order
         """
-        Form.__init__(self, *args, **kwargs)
+        FlaskForm.__init__(self, *args, **kwargs)
         self.page = None
 
     def validate(self):
@@ -41,7 +41,7 @@ class PageForm(Form):
         Do validation of the form contents.
         @return: True if the Form object was successfully validated, or False if it was not.
         """
-        rv = Form.validate(self)
+        rv = FlaskForm.validate(self)
         if not rv:
             flash('A required field is empty', 'error')
             return False

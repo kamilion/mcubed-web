@@ -5,7 +5,7 @@
 
 # Flask imports
 from flask import flash, request, redirect
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from flask_login import current_user
 from wtforms.fields import TextField, TextAreaField, PasswordField, HiddenField
 from wtforms.validators import DataRequired
@@ -44,11 +44,11 @@ def get_redirect_target():
         if is_safe_url(target):
             return target
 
-class RedirectForm(Form):
+class RedirectForm(FlaskForm):
     next = HiddenField()
 
     def __init__(self, *args, **kwargs):
-        Form.__init__(self, *args, **kwargs)
+        FlaskForm.__init__(self, *args, **kwargs)
         if not self.next.data:
             self.next.data = get_redirect_target() or ''
 
@@ -80,7 +80,7 @@ class TicketForm(RedirectForm):
         @param args: Arguments, in order of definition in class
         @param kwargs: Keyword based Arguments, in any order
         """
-        Form.__init__(self, *args, **kwargs)
+        FlaskForm.__init__(self, *args, **kwargs)
         self.ticket = None
 
     def validate(self):
@@ -88,7 +88,7 @@ class TicketForm(RedirectForm):
         Do validation of the form contents.
         @return: True if the Ticket object was successfully created, or False if it was not.
         """
-        rv = Form.validate(self)
+        rv = FlaskForm.validate(self)
         if not rv:
             flash('A required field is empty', 'error')
             return False
