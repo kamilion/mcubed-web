@@ -13,8 +13,8 @@ from flask import Flask, request, session, g, redirect, url_for, abort, render_t
 # Flask-login imports
 from flask_login import current_user, login_required
 
-# Flask-classy imports
-from flask_classy import FlaskView, route
+# Flask-classful imports
+from flask_classful import FlaskView, route
 
 # Flask-WTF imports
 from pages.pagesform import PageForm

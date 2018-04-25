@@ -5,9 +5,9 @@ This is a website based on the 'flask' python web microframework.
 
 http://flask.pocoo.org/
 
-It's currently based on top of Flask-Classy.
+It's currently based on top of Flask-Classful.
 
-https://pythonhosted.org/Flask-Classy/
+http://flask-classful.teracy.org/
 
 We expect the RethinkDB Database version 2.X or above to be installed.
 

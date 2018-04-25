@@ -1,8 +1,8 @@
-Flask>=0.10
-Flask-Classy>=0.6.8
+Flask>=0.12
+Flask-Classful>=0.14.0
 Flask-Login>=0.2.8
 Flask-UUID>=0.2
-Flask-WTF>=0.9
+Flask-WTF>=0.14
 rethinkdb>=1.14
 stripe>=1.11
 scrypt>=0.6

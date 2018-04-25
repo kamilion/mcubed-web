@@ -32,7 +32,7 @@ from auth.authview import AuthView
 from flask_defer import FlaskDefer, after_request
 
 ########################################################################################################################
-## Imports of Flask-Classy based Views
+## Imports of Flask-Classful based Views
 ## **EDIT ME**
 ########################################################################################################################
 

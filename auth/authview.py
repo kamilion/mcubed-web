@@ -10,8 +10,8 @@ from flask import Flask, request, session, g, redirect, url_for, abort, render_t
 # Flask-login imports
 from flask_login import login_user, logout_user, current_user, login_required
 
-# Flask-classy imports
-from flask_classy import FlaskView, route
+# Flask-classful imports
+from flask_classful import FlaskView, route
 
 # Flask-WTF imports
 from auth.authform import AuthForm, RegisterForm, PasswdForm, YubiAuthForm
@@ -23,7 +23,7 @@ from app.config import allow_new_users
 ########################################################################################################################
 class AuthView(FlaskView):
     """
-    A simple authentication view for Flask-Classy.
+    A simple authentication view for Flask-Classful.
     Relies on flask-wtf forms to do user lookups and provide a User object, if found, to the View.
     """
     def index(self):

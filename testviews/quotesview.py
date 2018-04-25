@@ -5,7 +5,7 @@ __author__ = 'Kamilion@gmail.com'
 ########################################################################################################################
 
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-from flask_classy import FlaskView, route
+from flask_classful import FlaskView, route
 from random import choice
 
 # we'll make a list to hold some quotes for our app
@@ -21,7 +21,7 @@ quotes = [
 
 class QuotesView(FlaskView):
     """
-    A simple demonstration view for Flask-Classy.
+    A simple demonstration view for Flask-Classful.
     """
     #route_base = '/'
 

@@ -5,7 +5,7 @@
 
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from flask_login import login_required, current_user
-from flask_classy import FlaskView, route
+from flask_classful import FlaskView, route
 
 
 ########################################################################################################################
@@ -14,7 +14,7 @@ from flask_classy import FlaskView, route
 
 class DuckyView(FlaskView):
     """
-    A simple authentication-required view for Flask-Classy.
+    A simple authentication-required view for Flask-Classful.
     Relies on flask-login to provide a User object, if found, to the View.
     """
     decorators = [ login_required ]

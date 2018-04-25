@@ -1,22 +1,22 @@
 from flask import flash
-from flask.ext.wtf import Form
-from flask.ext.login import current_user
+from flask_wtf import FlaskForm
+from flask_login import current_user
 from wtforms.fields import TextField, PasswordField
 from wtforms.validators import Required
 from auth.authmodel import User
 
 
 
-class AuthForm(Form):
+class AuthForm(FlaskForm):
     email = TextField('email', validators=[Required()])
     password = PasswordField('password', validators=[Required()])
 
     def __init__(self, *args, **kwargs):
-        Form.__init__(self, *args, **kwargs)
+        FlaskForm.__init__(self, *args, **kwargs)
         self.user = None
 
     def validate(self):
-        rv = Form.validate(self)
+        rv = FlaskForm.validate(self)
         if not rv:
             flash('A required field is empty', 'error')
             return False
@@ -38,16 +38,16 @@ class AuthForm(Form):
         return True
 
 
-class RegisterForm(Form):
+class RegisterForm(FlaskForm):
     email = TextField('email', validators=[Required()])
     password = PasswordField('password', validators=[Required()])
 
     def __init__(self, *args, **kwargs):
-        Form.__init__(self, *args, **kwargs)
+        FlaskForm.__init__(self, *args, **kwargs)
         self.user = None
 
     def validate(self):
-        rv = Form.validate(self)
+        rv = FlaskForm.validate(self)
         if not rv:
             flash('A required field is empty', 'error')
             return False
@@ -68,17 +68,17 @@ class RegisterForm(Form):
         else:
             return False
 
-class PasswdForm(Form):
+class PasswdForm(FlaskForm):
     password = PasswordField('old password', validators=[Required()])
     newpassword = PasswordField('new password', validators=[Required()])
     chkpassword = PasswordField('chk password', validators=[Required()])
 
     def __init__(self, *args, **kwargs):
-        Form.__init__(self, *args, **kwargs)
+        FlaskForm.__init__(self, *args, **kwargs)
         self.user = None
 
     def validate(self):
-        rv = Form.validate(self)
+        rv = FlaskForm.validate(self)
         if not rv:
             flash('A required field is empty', 'error')
             return False
