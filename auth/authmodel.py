@@ -8,7 +8,7 @@ __author__ = 'Kamilion@gmail.com'
 from flask import g
 
 # Flask-login imports
-from flask.ext.login import LoginManager, UserMixin
+from flask_login import LoginManager, UserMixin
 
 # Third Party Libraries
 import scrypt

@@ -5,12 +5,12 @@
 
 # Flask imports
 from flask import flash, request, redirect
-from flask.ext.wtf import Form
-from flask.ext.login import current_user
+from flask_wtf import Form
+from flask_login import current_user
 from wtforms.fields import TextField, TextAreaField, PasswordField, HiddenField
 from wtforms.validators import DataRequired
 # ReCAPTCHA imports
-from flask.ext.wtf.recaptcha import RecaptchaField
+from flask_wtf.recaptcha import RecaptchaField
 
 # urlparse imports
 from urlparse import urlparse, urljoin

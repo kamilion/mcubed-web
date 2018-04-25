@@ -5,8 +5,8 @@
 
 # Flask imports
 from flask import flash
-from flask.ext.wtf import Form
-from flask.ext.login import current_user
+from flask_wtf import Form
+from flask_login import current_user
 from wtforms.fields import TextField, TextAreaField, PasswordField
 from wtforms.validators import DataRequired
 

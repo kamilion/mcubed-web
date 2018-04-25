@@ -12,7 +12,7 @@ import jinja2
 import os
 
 # Flask-UUID imports
-from flask.ext.uuid import FlaskUUID
+from flask_uuid import FlaskUUID
 
 # Local site config imports
 import app.config as config

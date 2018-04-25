@@ -4,8 +4,8 @@
 ########################################################################################################################
 
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-from flask.ext.login import login_required, current_user
-from flask.ext.classy import FlaskView, route
+from flask_login import login_required, current_user
+from flask_classy import FlaskView, route
 
 
 ########################################################################################################################
