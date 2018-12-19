@@ -1,4 +1,4 @@
-Flask==0.12.2
+Flask==0.12.3
 Flask-Classful==0.14.1
 Flask-Login==0.2.11
 Flask-UUID==0.2
@@ -12,7 +12,7 @@ argparse==1.2.1
 commandr==1.5.0
 itsdangerous==0.24
 pyotp==2.2.6
-requests==2.18.4
+requests==2.20.1
 rethinkdb==2.3.0.post6
 scrypt==0.8.6
 sh==1.09
