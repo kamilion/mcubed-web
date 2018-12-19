@@ -1,5 +1,6 @@
 Flask>=0.12
 Flask-Classful>=0.14.0
+Flask-Defer>=1.0.0
 Flask-Login>=0.2.8
 Flask-UUID>=0.2
 Flask-WTF>=0.14
