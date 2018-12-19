@@ -22,11 +22,18 @@ from email.mime.text import MIMEText
 ########################################################################################################################
 
 def send_email(emailtarget, msg):
-    try:
-        mailserver = smtplib.SMTP(smtp['host'], smtp['port']) # Open a connection to the SMTP server.
-    except socket.error:
-        print("Something went wrong with the socket.")
-        return False
+    if smtp['ssl']:
+        try:
+            mailserver = smtplib.SMTP_SSL(smtp['host'], smtp['port']) # Open a connection to the SMTP server.
+        except socket.error:
+            print("Something went wrong with the SSL socket.")
+            return False
+    else:
+        try:
+            mailserver = smtplib.SMTP(smtp['host'], smtp['port']) # Open a connection to the SMTP server.
+        except socket.error:
+            print("Something went wrong with the socket.")
+            return False
 
     if smtp['tls']: # Then try to connect to the server and open a TLS tunnel.
         tlsresponse = mailserver.ehlo() # Ask the server what it supports, save the result.
