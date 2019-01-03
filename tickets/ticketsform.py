@@ -139,7 +139,7 @@ Message: {}
         if ticket is not None:
             if self.source.data=='fireeye':
               compose_email_and_send(text, html, subject, 'FireEye.TB@m-cubed.com')
-            if self.source.data=='fireeye-eval':
+            elif self.source.data=='fireeye-eval':
               compose_email_and_send(text, html, subject, 'FireEye.eval@m-cubed.com')
             elif self.source.data=='riverbed':
               compose_email_and_send(text, html, subject, 'rb@m-cubed.com')
