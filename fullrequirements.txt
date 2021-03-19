@@ -5,7 +5,7 @@ Flask-Defer==1.1.0
 Flask-Login==0.4.1
 Flask-UUID==0.2
 Flask-WTF==0.14.2
-Jinja2==2.10
+Jinja2==2.11.3
 MarkupSafe==1.1.0
 WTForms==2.2.1
 Werkzeug==0.14.1
