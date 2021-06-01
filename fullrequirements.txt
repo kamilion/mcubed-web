@@ -24,7 +24,7 @@ scrypt==0.8.6
 sh==1.12.14
 six==1.12.0
 stripe==2.16.0
-urllib3==1.24.1
+urllib3==1.26.5
 webencodings==0.5.1
 wsgiref==0.1.2
 yubico-client==1.10.0
